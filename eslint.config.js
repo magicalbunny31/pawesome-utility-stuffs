@@ -73,7 +73,6 @@ module.exports = [{
       "no-eq-null": `error`,
       "no-extra-boolean-cast": `warn`,
       "no-invalid-this": `error`,
-      "no-lone-blocks": `warn`,
       "no-multi-assign": `warn`,
       "no-new-func": `warn`,
       "no-octal": `warn`,
