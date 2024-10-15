@@ -1,14 +1,13 @@
 {
-   "name": "@magicalbunny31/awesome-utility-stuff",
-   "version": "1.25.10",
-   "description": "some awesome utilities that i pretty much need or else my code will suck 🐾",
-   "scripts": {
-      "test-cjs": "node ./test/index.cjs",
-      "test-esm": "node ./test/index.mjs",
-      "test-discord": "node ./test/discord.mjs"
-   },
+   "name": "@magicalbunny31/pawesome-utility-stuffs",
+   "version": "2.0.0",
+   "description": "🐾 some pawesome utilities that i pretty much need or else my code will suck",
    "main": "dist/cjs/index.js",
    "module": "dist/esm/index.js",
+   "scripts": {
+      "test-discord": "node ./tests/discord.mjs",
+      "test": "node ./tests/index.cjs"
+   },
    "types": "types/index.d.ts",
    "files": [
       "dist",
@@ -17,20 +16,25 @@
    ],
    "repository": {
       "type": "git",
-      "url": "git+https://github.com/magicalbunny31/awesome-utility-stuff.git"
+      "url": "git+https://github.com/magicalbunny31/pawesome-utility-stuffs.git"
    },
    "author": "magicalbunny31",
    "license": "MIT",
    "bugs": {
-      "url": "https://github.com/magicalbunny31/awesome-utility-stuff/issues"
+      "url": "https://github.com/magicalbunny31/pawesome-utility-stuffs/issues"
    },
-   "homepage": "https://github.com/magicalbunny31/awesome-utility-stuff#readme",
+   "homepage": "https://github.com/magicalbunny31/pawesome-utility-stuffs#readme",
    "dependencies": {
       "common-tags": "^1.8.2",
-      "discord.js": "^14.15.2",
-      "nearest-color": "^0.4.4"
+      "discord.js": "^14.16.3",
+      "emoji-regex": "^10.4.0",
+      "lodash": "^4.17.21"
    },
    "engines": {
-      "node": ">=16.11.0"
+      "node": ">=18"
+   },
+   "devDependencies": {
+      "eslint": "^9.12.0",
+      "globals": "^15.11.0"
    }
 }

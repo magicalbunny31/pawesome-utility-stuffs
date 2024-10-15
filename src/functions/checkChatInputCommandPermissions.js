@@ -1,19 +1,11 @@
 /**
  * 🔎 the following code is basically spaghetti code
- * 📖 however, it's very readable!!
+ * 📖 however, it's very readable !!
  * ✨ we (or i) *love* readable code~ ,':3
  * 🦊 ~ magicalbunny31
  */
 
 
-/**
- * check if a member has permissions to use a (discord) chat-input application command 🔓
- * @param {string} commandId id of the command to view permissions of 🔎
- * @param {import("discord.js").GuildTextBasedChannel} channel channel to check permissions against 💬
- * @param {import("discord.js").GuildMember} member member to check permissions against 👤
- * @see https://cdn.discordapp.com/attachments/697138785317814292/1042878162901672048/flowchart-for-new-permissions.png
- * @returns {boolean} whether this member has permissions to use this (discord) chat-input application command 📛
- */
 module.exports = async (commandId, channel, member) => {
    // imports
    const { PermissionFlagsBits } = require("discord.js");
@@ -86,7 +78,7 @@ module.exports = async (commandId, channel, member) => {
 
 
    // check default_member_permissions
-   const checkDefaultMemberPermissions = async () => {
+   const checkDefaultMemberPermissions = () => {
       if (defaultMemberPermissions === null) { // default_member_permissions for this command is null (there are no default_member_permissions)
          return true;
 
@@ -117,7 +109,7 @@ module.exports = async (commandId, channel, member) => {
 
 
    // check user/role permissions
-   const checkUserRolePermissions = async () => {
+   const checkUserRolePermissions = () => {
       if (commandPermissions.find(commandPermission => commandPermission.id === member.id)) { // commandPermission overrides exists for this user
 
 
@@ -289,6 +281,6 @@ module.exports = async (commandId, channel, member) => {
    };
 
 
-   // oh boy, here we go!!
+   // oh boy, here we go !!
    return checkChannelPermissions();
 };

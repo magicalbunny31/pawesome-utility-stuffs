@@ -1,244 +1,272 @@
-// classes
+import { ActionRow, ApplicationEmoji, GuildMember, GuildTextBasedChannel, Interaction, MessageComponentInteraction, PermissionFlagsBits, User } from "discord.js";
 
-/* nothing to see here.. */
-
-
-
-
-
-// data
 
 /**
- * colours that i use more than once across all projects 🎨
+ * 🎨 (decimal) colours that i use more than once across all projects
+ * @example
+ * colours.bunny_gold;
+ * // => 14988288
  */
 export const colours: typeof import("../src/data/colours.js");
 
+
 /**
- * my regular expression to match emojis in unicode 15.0 🦊
- * @returns regular expression to match emojis in unicode 15.0 🦊
+ * 🦊 regular expression to match emojis in unicode v16.0.0
+ * @see https://www.npmjs.com/package/emoji-regex
  */
 export const emoji: RegExp;
 
-/**
- * a bunch of emojis used for my projects 🦊
- * @returns an emoji in the format <a:name:id> or <:name:id> 🗨️
- */
-export const emojis: typeof import("../src/data/emojis.js");
 
 /**
- * my regular expression to match http(s) urls 🦊
- * @see https://stackoverflow.com/a/15855457 🔗
- * @returns regular expression to match http(s) urls 🦊
- */
-export const url: RegExp;
-
-
-
-
-
-// functions
-
-/**
- * check if two arrays are equal 🔀
- *
- * this function won't work if the arrays contain [`Object`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)s ⚠️
- * @param a array to compare 📃
- * @param b array to compare 📃
- * @returns `true` if these arrays are equal (and vice versa) ❓
- */
-export function arraysEqual<A, B>(a: A, b: B): boolean;
-
-/**
- * automatically create an array with values filled via a function 🔁
- * @param length how long this array should be #️⃣
- * @param func function to run for each element of this array 📃
- * @returns array with values filled via a function 📄
+ * 🔁 automatically create an array with values filled from function
+ * @param length #️⃣ how long this array should be
+ * @param func 📃 function to run for each element of this array
+ * @example
+ * autoArray(5, () => `bunny`);
+ * // => [ `bunny`, `bunny`, `bunny`, `bunny`, `bunny` ]
  */
 export function autoArray<T>(length: number, func: (value?: T, index?: number) => T): T[];
 
-/**
- * check if the correct user responds to a MessageComponent and, if not, responds to it 📋
- * @param expectedUser the user that should be able to interact with this MessageComponent 👤
- * @param receivedUser the user that ended up interacting with this MessageComponent 👥
- * @param interaction the interaction to respond to 💬
- * @returns nothing, or the interaction responded to ✅
- */
-export async function blockWrongUserMessageComponentInteraction(expectedUser: import("discord.js").User, receivedUser: import("discord.js").User, interaction: import("discord.js").MessageComponentInteraction): Promise<void>;
 
 /**
- * check if a member has permissions to use a (discord) chat-input application command 🔓
- * @param commandId id of the command to view permissions of 🔎
- * @param channel channel to check permissions against 💬
- * @param member member to check permissions against 👤
- * @see https://cdn.discordapp.com/attachments/697138785317814292/1042878162901672048/flowchart-for-new-permissions.png
- * @returns whether this member has permissions to use this (discord) chat-input application command 📛
+ * 🔓 check if a member has permissions to use a (discord) chat-input application command
+ * @param commandId 🔎 id of the command to view permissions of
+ * @param channel 💬 channel to check permissions against
+ * @param member 👤 member to check permissions against
+ * @see https://nuzzles.dev/assets/discord/other/application-command-permissions-flowchart.png
+ * @example
+ * checkChatInputCommandPermissions(`490178047325110282`, channel, user);
+ * // => true
  */
-export async function checkChatInputCommandPermissions(commandId: string, channel: import("discord.js").GuildTextBasedChannel, member: import("discord.js").GuildMember): Promise<boolean>;
+export async function checkChatInputCommandPermissions(commandId: string, channel: GuildTextBasedChannel, member: GuildMember): Promise<boolean>;
+
 
 /**
- * gets a random element from an array ❓
- * @param array array to get a random element from 📃
- * @param choices number of choices to get #️⃣
- * @returns an element of that array 📄
+ * ❓ get random elements from an `Array`
+ * @param array 📃 `Array` to get a random element from
+ * @param choices 🔢 number of choices to get (default `1`)
+ * @example
+ * choice([ `🐰`, `🦊`, `🐺`, `🦌` ]);
+ * // => `🦊`
  */
-export function choice<T>(array: T[]): T;
+export function choice<T>(array: T[], choices?: number = 1): T;
+
 
 /**
- * gets a random element from an array ❓
- * @param array array to get a random element from 📃
- * @param choices number of choices to get #️⃣
- * @returns an element of that array 📄
+ * 💭 defer an `ActionRow` `ButtonComponent` on a `Message`
+ * @param customId 🆔 custom_id of the `ButtonComponent` to display as deferred
+ * @param components 📋 all `ActionRow`s (containing `MessageComponent`s) of the message
  */
-export function choice<T>(array: T[], choices: number): T[];
+export function deferComponents(customId: string, components: ActionRow[]): ActionRow[];
 
 /**
- * defer `Discord.ActionRow` `Discord.Component`s on a `Discord.Message` 💭
- * @param customId custom_id of a `Discord.Component` to display as deferred 🚩
- * @param components `Discord.Component`s (in `Discord.ActionRow`s) to defer 🔘
- * @returns deferred `Discord.Component`s (in `Discord.ActionRow`s) ✅
+ * 💭 defer an `ActionRow` `BaseSelectMenuComponent` on a `Message`
+ * @param customId 🆔 custom_id of the `ButtonComponent` to display as deferred
+ * @param values 👉 values of the `BaseSelectMenuComponent` that were selected
+ * @param components 📋 all `ActionRow`s (containing `MessageComponent`s) of the message
  */
-export function deferComponents(customId: string, components: import("discord.js").ActionRow[]): import("discord.js").ActionRow[];
+export function deferComponents(customId: string, values: string[], components: ActionRow[]): ActionRow[];
+
 
 /**
- * defer `Discord.ActionRow` `Discord.Component`s on a `Discord.Message` 💭
- * @param customId custom_id of a `Discord.Component` to display as deferred 🚩
- * @param values default option values of the select menu 📋
- * @param components `Discord.Component`s (in `Discord.ActionRow`s) to defer 🔘
- * @returns deferred `Discord.Component`s (in `Discord.ActionRow`s) ✅
+ * 🦊 discord-formatted emoji strings
+ * @param applicationEmojis 🤖 array of this app's `ApplicationEmoji`s - don't specify this argument to only return emojis from guilds
+ * @returns ❓ this returns an [`Object`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) combining this app's `ApplicationEmoji`s (optional) and emojis from guilds
+ * @example
  */
-export function deferComponents(customId: string, values: string[], components: import("discord.js").ActionRow[]): import("discord.js").ActionRow[];
+export function emojis(applicationEmojis?: ApplicationEmoji[]): { [emojiName: string]: string };
+
 
 /**
- * find similar strings/objects based off of a string 📋
+ * 📋 find similar strings/objects based off of a string
  *
- * this uses aceakash's string-similarity, see link 👤
- * @see https://github.com/aceakash/string-similarity 🔗
- * @param query string to query 📄
- * @param targets target array 📃
- * @param settings settings to include 🔧
- * @returns array of results of the targets sorted in similarity 📜
+ * 🔗 based off of [aceakash](https://github.com/aceakash)'s [`string-similarity`](https://github.com/aceakash/string-similarity), which is based off of the [Dice-Sørensen coefficient](https://wikipedia.org/wiki/Dice-S%c3%b8rensen_coefficient)
+ * @param query 📄 `String` to query
+ * @param targets 🧺 `Array` of `String`s to compare against the query parameter
+ * @param settings 🔧 settings for the function
+ * @see https://github.com/aceakash/string-similarity
  */
 export function findSimilar(query: string, targets: string[], settings: {
-   /** max amounts of results to return 🔢 */
+   /**
+    * 🔢 max amount of results to return
+    */
    limit?: number;
 
-   /** filter out results with a score below this target 🗯️ */
-   minScore?: number
+   /**
+    * 🗯️ filter out results with a score below this target
+    */
+   minScore?: number;
 }): { score: number, target: string }[];
 
+
 /**
- * find similar strings/objects based off of a string 📋
+ * 📋 find similar strings/objects based off of a string
  *
- * this uses aceakash's string-similarity, see link 👤
- * @see https://github.com/aceakash/string-similarity 🔗
- * @param query string to query 📄
- * @param targets target array 📃
- * @param settings settings to include 🔧
- * @returns array of results of the targets sorted in similarity 📜
+ * 🔗 based off of [aceakash](https://github.com/aceakash)'s [`string-similarity`](https://github.com/aceakash/string-similarity), which is based off of the [Dice-Sørensen coefficient](https://wikipedia.org/wiki/Dice-S%c3%b8rensen_coefficient)
+ * @param query 📄 `String` to query
+ * @param targets 🧺 `Array` of `Object`s to compare against the query parameter
+ * @param settings 🔧 settings for the function
+ * @see https://github.com/aceakash/string-similarity
  */
 export function findSimilar<T>(query: string, targets: T[], settings: {
-   /** for an array of objects, the key of the object to access for the string 💬 */
-   key?: keyof T;
+   /**
+    * 💬 the key of the object to access for the string
+    */
+   key: keyof T;
 
-   /** max amounts of results to return 🔢 */
+   /**
+    * 🔢 max amount of results to return
+    */
    limit?: number;
 
-   /** filter out results with a score below this target 🗯️ */
-   minScore?: number
+   /**
+    * 🗯️ filter out results with a score below this target
+    */
+   minScore?: number;
 }): { score: number, object: T }[];
 
-/**
- * format bytes into a human-readable string 📄
- * @see https://stackoverflow.com/a/18650828 🔗
- * @param bytes bytes to convert into a human-readable string 🔢
- * @param useBytes set to `true` if you want to use mebi- (default `false`) 🔀
- * @param decimals amount of decimal spaces to display in the human-readable string (default `2`) #️⃣
- * @returns human-readable string 📄
- */
-export function formatBytes<T>(bytes: number, useBytes: boolean = false, decimals: number = 2): string;
 
 /**
- * formats a permission to a readable string 📝
- * @see https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags 🔗
- * @param permissions permission to format 🗨️
+ * 📄 format bytes into a human-readable string
+ * @param bytes 💻 bytes to convert into a human-readable string
+ * @param useBytes 🔀 set to `true` if you want to use mebi- (default `false`)
+ * @param decimals 🔢 amount of decimal spaces to display in the human-readable string (default `2`)
+ * @see https://stackoverflow.com/a/18650828
+ * @example
+ * formatBytes(10000);
+ * formatBytes(10240, true);
+ * // => `10 KB`;
+ */
+export function formatBytes(bytes: number, useBytes?: boolean = false, decimals?: number = 2): string;
+
+
+/**
+ * 📝 formats a permission to a readable string
+ * @see https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags
+ * @param permissionsInput 🗨️ permissions to format
  * @example
  * formatPermission([ PermissionFlagsBits.BanMembers, PermissionFlagsBits.KickMembers ]);
  * formatPermission(0x6);
  * formatPermission(0x6n);
- * // [ `Ban Members 🚫`, `Kick Members 👢` ]
- * @returns array of a permission strings that have been formatted 📄
+ * // => [ `Ban Members`, `Kick Members` ]
  */
-export function formatPermissions(permissionsInput: import("discord.js/typings").PermissionFlagsBits[] | number | bigint): string[];
+export function formatPermissions(permissionsInput: number | bigint): string[];
+
 
 /**
- * get the nearest coloured paw from a hex colour value 🐾
- * @param hex hex string colour value to use 🎨
- * @returns nearest coloured paw emoji 🐾
+ * 🟰 perform a deep comparison between two variables
+ *
+ * ✨ these variables can be anything! `Array`s, `Object`s, `ArrayBuffer`s, `Date`s, etc..
+ * @example
+ * isEqual([ `fox` ], [ `fox` ]);
+ * // => true
+ * isEqual({ bun: `fox` }, { wolf: `deer` });
+ * // => false
  */
-export function getNearestColourPaw(hex: string): string;
+export function isEqual(a: any, b: any): boolean;
+
 
 /**
- * glorious no operation arrow function 💫
+ * 💫 glorious no operation arrow function
  * @example
  * () => {};
  */
 export function noop(): void;
 
+
 /**
- * get a random number! #️⃣
- * @param min minimum number to generate 🔢
- * @param max maximum number to generate 🔢
+ * 🔢 get a random number!
+ * @param min ⬆️ minimum number to generate
+ * @param max ⬇️ maximum number to generate
+ * @example
+ * number(0, 926);
+ * // => 621
  */
 export function number(min: number, max: number): number;
 
+
 /**
- * similar to Array.filter(), except elements that don't pass the condition are returned too 🔁
- * @param array array to partition 📃
- * @param condition condition to evaluate for each element ❓
- * @example partition([ 1, 3, 5, 7, 9 ], num => num < 5); // [[ 1, 3 ], [ 5, 7, 9 ]]
- * @returns `Array[0]`: pass; `Array[1]`: fail - try destructuring them! 📄
+ * 🔁 similar to `Array.filter()`, except elements that don't pass the condition are returned too
+ * @param array 📃 `Array` to partition
+ * @param condition ❓ condition to evaluate for each element
+ * @returns 📄 `Array[0]`: pass; `Array[1]`: fail - try destructuring them!
+ * @example
+ * partition([ 1, 3, 5, 7, 9 ], num => num < 5);
+ * // => [[ 1, 3 ], [ 5, 7, 9 ]]
  */
 export function partition<T>(array: T[], condition: (value?: T, index?: number, array?: T[]) => boolean): [ T[], T[] ];
 
+
 /**
- * remove duplicates from an array of values 📤
- * @param array array of values (presumably with duplicates, duh) 📃
- * @returns array of values (except there aren't any duplicate values in them owo) 📄
+ * ⚠️ responds to the interaction by showing the user an error message
+ * @param interaction 💬 the command's interaction
+ * @param guildInvite 🔗 this application's guild invite
+ * @param error 📋 the error that occurred
+ */
+export async function respondToInteractionWithError(interaction: Interaction, guildInvite: string, error?: Error): Promise<void>;
+
+
+/**
+ * 🗯️ respond to a `MessageComponentInteraction` explaining that they are not the target user to respond to this ``MessageComponent
+ * @param interaction 💬 the `MessageComponentInteraction` to respond to
+ * @param expectedUser 👤 the user that should be able to interact with this `MessageComponent`
+ * @param receivedUser 👥 the user that ended up interacting with this `MessageComponent`
+ */
+export async function respondToWrongUserMessageComponentInteraction(interaction: MessageComponentInteraction, expectedUser: User, receivedUser: User): Promise<void>;
+
+
+/**
+ * 📤 remove duplicates from an `Array` of values
+ * @param array 📃 `Array` of values (presumably with duplicates, duh)
+ * @example
+ * set([ `bunny`, `bun`, `bun`, `b` ]);
+ * // => [ `bunny`, `bun , `b` ]
  */
 export function set<T>(array: T[]): T[];
 
+
 /**
- * shuffle an array 🔀
- * @param array array to shuffle 📃
- * @returns a shuffled version of the inputted array 📋
+ * 🔀 shuffle an `Array`
+ * @param array 📃 `Array` to shuffle
+ * @example
+ * shuffle([ `🐰`, `🦊`, `🐺`, `🦌` ]);
+ * // => [ `🐺`, `🦊`, `🦌`, `🐰` ]
  */
 export function shuffle<T>(array: T[]): T[];
 
-/**
- * strips indents off a string 🔨
- * @param str string to strip indents off of 🗨️
- * @returns string with indents stripped 📄
- */
-export function strip(str: strip): string;
 
 /**
- * find the sum of an array (aka a quick way of running an addition reducer function) 🔢
- * @param array array of values to find the sum of (very descriptive!!) 📃
- * @param initialValue initial value for the reducer function 🏁
- * @returns sum of the array 📩
+ * 🔨 strips indents off a multi-line template literals to form a formatted string
+ * @param string 🗨️ template literals to strip indents off of
+ * @example
+ * strip(`
+ *    hai!
+ *    hewwo!
+ *    meowdy!
+ * `);
+ * // => `hai!\nhewwo!\nmeowdy!`
  */
-export function sum<T>(array: T[], initialValue?: any): T;
+export function strip(string: string): string;
+
 
 /**
- * function to try to fetch something or return undefined instead of throwing ⏱️
- * @param promise the Promise to try 📂
- * @returns the resolved Promise, or `undefined` if the Promise couldn't be resolved 📄
+ * 🔢 find the sum of an  (aka a quick way of running an addition reducer function)
+ * @param array 📃 `Array` of values to find the sum of (very descriptive!!)
+ * @param initialValue 🏁 initial value for the reducer function
  */
-export async function tryOrUndefined<T>(promise: T): T?;
+export function sum<T>(array: T[], initialValue?: any = 0): T;
+
 
 /**
- * pretty much "pauses" asynchronous code ⏱️
- * @param delay ms delay to wait for 🔢
- * @returns a "pause" in the asynchronous code!! ⌚
+ * ⏱️ function to try to resolve a promise or return `undefined` instead of throwing an `Error`
+ * @param promise 📂 the `Promise` to try
+ * @returns 📄 the resolved `Promise` or `undefined` if the `Promise` couldn't be resolved
+ */
+export async function tryOrUndefined<T>(promise: T): Promise<T>?;
+
+
+/**
+ * ⏱️ pretty much "pauses" asynchronous code
+ * @param delay 🔢 delay in milliseconds to wait for
  */
 export async function wait(delay: number): Promise<void>;

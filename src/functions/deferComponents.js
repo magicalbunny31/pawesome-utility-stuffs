@@ -1,10 +1,3 @@
-/**
- * defer `Discord.ActionRow` `Discord.Component`s on a `Discord.Message` 💭
- * @param {string} customId custom_id of a `Discord.Component` to display as deferred 🚩
- * @param {string[] | import("discord.js").ActionRow[]} valuesOrComponents default option values of the select menu 📋 // `Discord.Component`s (in `Discord.ActionRow`s) to defer 🔘
- * @param {import("discord.js").ActionRow[]} components `Discord.Component`s (in `Discord.ActionRow`s) to defer 🔘
- * @returns {import("discord.js").ActionRow[]} deferred `Discord.Component`s (in `Discord.ActionRow`s) ✅
- */
 module.exports = (customId, valuesOrComponents, components) => {
    // imports
    const { emojis } = require("../../");
@@ -25,7 +18,7 @@ module.exports = (customId, valuesOrComponents, components) => {
 
    // no foundComponent
    if (!foundComponent)
-      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › deferComponents: component not found ⚠️`);
+      throw new TypeError(`🚫 @magicalbunny31/pawesome-utility-stuffs - deferComponents(): component not found`);
 
 
    if (foundComponent instanceof ButtonComponent) { // this is a button
@@ -47,7 +40,7 @@ module.exports = (customId, valuesOrComponents, components) => {
 
 
    } else // uhm uh uhh can't defer this component
-      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › deferComponents: can't defer this component - try deferring the interaction instead ⚠️`);
+      throw new TypeError(`🚫 @magicalbunny31/pawesome-utility-stuffs - deferComponents(): can't defer this component, try deferring the interaction instead`);
 
 
    // disable all components

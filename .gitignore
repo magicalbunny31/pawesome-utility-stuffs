@@ -5,5 +5,5 @@
 # 📦 dependencies
 node_modules/
 
-# 🔧 testing dir
-test/
+# 🔧 tests
+tests/

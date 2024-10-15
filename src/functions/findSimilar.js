@@ -1,16 +1,3 @@
-/**
- * find similar strings/objects based off of a string 📋
- *
- * this uses aceakash's string-similarity, see link 👤
- * @see https://github.com/aceakash/string-similarity 🔗
- * @param {string} query string to query 📄
- * @param {(string | object)[]} targets target array 📃
- * @param {object} settings settings to include 🔧
- * @param {string} settings.key for an array of objects, the key of the object to access for the string 💬
- * @param {number} settings.limit max amounts of results to return 🔢
- * @param {number} settings.minScore filter out results with a score below this target 🗯️
- * @returns {{ score: number, [target | object]: string | T }[]} array of results of the targets sorted in similarity 📜
- */
 module.exports = (query, targets, settings = {}) => {
    // function to compare two strings
    const compareStrings = (query, target) => {
