@@ -1,6 +1,6 @@
 {
    "name": "@magicalbunny31/pawesome-utility-stuffs",
-   "version": "2.0.0",
+   "version": "2.0.1",
    "description": "🐾 some pawesome utilities that i pretty much need or else my code will suck",
    "main": "dist/cjs/index.js",
    "module": "dist/esm/index.js",

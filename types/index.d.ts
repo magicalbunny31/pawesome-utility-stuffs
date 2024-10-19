@@ -42,14 +42,23 @@ export async function checkChatInputCommandPermissions(commandId: string, channe
 
 
 /**
- * ❓ get random elements from an `Array`
+ * ❓ get a random element from an `Array`
  * @param array 📃 `Array` to get a random element from
- * @param choices 🔢 number of choices to get (default `1`)
  * @example
  * choice([ `🐰`, `🦊`, `🐺`, `🦌` ]);
  * // => `🦊`
  */
-export function choice<T>(array: T[], choices?: number = 1): T;
+export function choice<T>(array: T[]): T;
+
+/**
+ * ❓ get random elements from an `Array`
+ * @param array 📃 `Array` to get random elements from
+ * @param choices 🔢 number of elements to get (default `1`)
+ * @example
+ * choice([ `🐰`, `🦊`, `🐺`, `🦌` ], 2);
+ * // => [ `🦊`, `🦌` ]
+ */
+export function choice<T>(array: T[], choices: number): T[];
 
 
 /**
