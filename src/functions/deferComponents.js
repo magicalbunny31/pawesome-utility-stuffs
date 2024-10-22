@@ -22,7 +22,7 @@ module.exports = (customId, valuesOrComponents, components) => {
 
 
    if (foundComponent instanceof ButtonComponent) { // this is a button
-      deferComponents[foundActionRowIndex].components[foundComponentIndex].data.emoji = parseEmoji(emojis.loading);
+      deferComponents[foundActionRowIndex].components[foundComponentIndex].data.emoji = parseEmoji(emojis().loading);
 
 
    } else if (foundComponent instanceof BaseSelectMenuComponent) { // this is a select menu
@@ -34,7 +34,7 @@ module.exports = (customId, valuesOrComponents, components) => {
       for (const option of options)
          if (values.includes(option.value))
             Object.assign(option, {
-               emoji: parseEmoji(emojis.loading),
+               emoji: parseEmoji(emojis().loading),
                default: true
             });
 
