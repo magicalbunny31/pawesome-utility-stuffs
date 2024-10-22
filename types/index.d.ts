@@ -163,19 +163,6 @@ export function formatPermissions(permissionsInput: number | bigint): string[];
 
 
 /**
- * 🟰 perform a deep comparison between two variables
- *
- * ✨ these variables can be anything! `Array`s, `Object`s, `ArrayBuffer`s, `Date`s, etc..
- * @example
- * isEqual([ `fox` ], [ `fox` ]);
- * // => true
- * isEqual({ bun: `fox` }, { wolf: `deer` });
- * // => false
- */
-export function isEqual(a: any, b: any): boolean;
-
-
-/**
  * 💫 glorious no operation arrow function
  * @example
  * () => {};
