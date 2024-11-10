@@ -27,6 +27,7 @@ module.exports = {
 
    berry_bot: 0x0f87f0,
    flooded_area_bot: 0x4de94c,
+   flooded_area_moderation: 0xbc1922,
    get halowo_levels() { return this.purple; },
    mintbubblex: DiscordColours.Blue,
    friends_smp: DiscordColours.Blue,
