@@ -1,6 +1,6 @@
-module.exports = async promise => {
+module.exports = async func => {
    try {
-      return await promise;
+      return await func;
    } catch {
       return undefined;
    };

@@ -254,11 +254,21 @@ export function sum<T>(array: T[], initialValue?: any = 0): T;
 
 
 /**
- * ⏱️ function to try to resolve a promise or return `undefined` instead of throwing an `Error`
- * @param promise 📂 the `Promise` to try
- * @returns 📄 the resolved `Promise` or `undefined` if the `Promise` couldn't be resolved
+ * ⏱️ run a (async) function and attempt return it: if it errors, return `undefined` instead of throwing an error
+ * @param func 📂 the function to try and return
+ * @remarks ❗ the `func` variable will be `await`ed and thus wrapped in its own [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise): `tryOrUndefined` itself will always be a [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) so even if `func` is not a [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) it must be treated as if it is one
+ * @example
+ * await tryOrUndefined(thisPromiseWillResolve(`uwu`));
+ * // => `uwu`
+ * await tryOrUndefined(thisPromiseWillReject(`uwu`));
+ * // => undefined
+ * await tryOrUndefined(thisWillResolve(`owo`));
+ * // => `uwu`
+ * await tryOrUndefined(thisWillReject(`owo`));
+ * // => undefined
+ * @returns 📄 the resolved function's returned value, or `undefined` if it errored
  */
-export async function tryOrUndefined<T>(promise: T): Promise<T>?;
+export async function tryOrUndefined<T>(func: T): Promise<T>?;
 
 
 /**
