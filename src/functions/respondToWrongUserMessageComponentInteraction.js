@@ -58,7 +58,7 @@ module.exports = async (interaction, expectedUser, receivedUser) => {
 
 
    // guild and application emojis
-   const allEmojis = emojis(interaction.client.application.id);
+   const allEmojis = emojis(await interaction.client.application.emojis.fetch());
 
 
    // some other variables
