@@ -76,7 +76,7 @@ const getResponse = emojis => {
 };
 
 
-module.exports = async (interaction, guildInvite, error) => {
+module.exports = async (interaction, guildInvite = `https://nuzzles.dev/discord`, error) => {
    // imports
    const { colours, emojis, noop } = require("../../");
 
