@@ -199,7 +199,7 @@ export function partition<T>(array: T[], condition: (value?: T, index?: number, 
  * @param guildInvite 🔗 this application's guild invite
  * @param error 📋 the error that occurred
  */
-export async function respondToInteractionWithError(interaction: Interaction, guildInvite: string, error?: Error): Promise<void>;
+export async function respondToErrorInteraction(interaction: Interaction, guildInvite?: string, error?: Error): Promise<void>;
 
 
 /**
