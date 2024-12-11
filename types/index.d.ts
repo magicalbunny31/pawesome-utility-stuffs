@@ -1,6 +1,14 @@
 import { ActionRow, ApplicationEmoji, GuildMember, GuildTextBasedChannel, Interaction, MessageComponentInteraction, PermissionFlagsBits, User } from "discord.js";
 
 
+// thank you: https://hackernoon.com/mastering-type-safe-json-serialization-in-typescript
+type JSONPrimitive = string | number | boolean | null | undefined;
+
+type JSONValue = JSONPrimitive | JSONValue[] | {
+   [key: string]: JSONValue;
+};
+
+
 /**
  * 🎨 (decimal) colours that i use more than once across all projects
  * @example
@@ -193,6 +201,23 @@ export function noop(): void;
  * // => 621
  */
 export function number(min: number, max: number): number;
+
+
+/**
+ * 🔎 parse a json file from the specified absolute filepath
+ * @remarks 💡 this pairs well with `getRelativeAbsolutePath()`!
+ * @param path 🔗 absolute filepath to this json file
+ * @example
+ * const path = getRelativeAbsolutePath(`..`, `package.json`);
+ * // => `/home/bunny/package.json` 
+ *
+ * await parseJSONFile(path);
+ * // => {
+ * // =>    "name": "@magicalbunny31/pawesome-utility-stuffs",
+ * // =>    ...
+ * // => }
+ */
+export async function parseJSONFile(path: string): JSONValue;
 
 
 /**

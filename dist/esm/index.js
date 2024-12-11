@@ -12,6 +12,7 @@ import formatPermissions from "../../src/functions/formatPermissions.js";
 import getRelativeAbsolutePath from "../../src/functions/getRelativeAbsolutePath.js";
 import noop from "../../src/functions/noop.js";
 import number from "../../src/functions/number.js";
+import parseJSONFile from "../../src/functions/parseJSONFile.js";
 import partition from "../../src/functions/partition.js";
 import respondToErrorInteraction from "../../src/functions/respondToErrorInteraction.js";
 import respondToWrongUserMessageComponentInteraction from "../../src/functions/respondToWrongUserMessageComponentInteraction.js";
@@ -38,6 +39,7 @@ export {
    getRelativeAbsolutePath,
    noop,
    number,
+   parseJSONFile,
    partition,
    respondToErrorInteraction,
    respondToWrongUserMessageComponentInteraction,
