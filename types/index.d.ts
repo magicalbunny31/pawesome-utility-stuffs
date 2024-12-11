@@ -256,7 +256,7 @@ export function shuffle<T>(array: T[]): T[];
  * `);
  * // => `hai!\nhewwo!\nmeowdy!`
  */
-export function strip(string: string): string;
+export function strip(text: string): string;
 
 
 /**
