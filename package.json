@@ -30,7 +30,7 @@
       "emoji-regex": "^10.4.0"
    },
    "engines": {
-      "node": ">=18"
+      "node": ">=20"
    },
    "devDependencies": {
       "eslint": "^9.14.0",
