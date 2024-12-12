@@ -24,9 +24,13 @@ module.exports = (...paths) => {
    const callsites = getCallSites();
    const filename = callsites[1].getFileName();
 
-   const joinedPath = join(filename, `..`, ...paths);
+   let joinedPath = join(filename, `..`, ...paths);
 
-   if (ignoreUri && !require.main) // esm only
+   if (process.platform !== `win32`) // not windows only: add the starting `/` if it doesn't already exist
+      if (!joinedPath.startsWith(`/`))
+         joinedPath = `/${joinedPath}`;
+
+   if (ignoreUri && !require.main) // esm only: remove the `file://` prefix from this uri
       return decodeURIComponent(joinedPath.slice(6));
 
    else
