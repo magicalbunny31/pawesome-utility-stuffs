@@ -217,7 +217,7 @@ export function number(min: number, max: number): number;
  * // =>    ...
  * // => }
  */
-export async function parseJSONFile(path: string): JSONValue;
+export async function parseJSONFile(path: string): Promise<JSONValue>;
 
 
 /**
