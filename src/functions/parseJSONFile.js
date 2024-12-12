@@ -3,13 +3,6 @@ module.exports = async path => {
    const { readFile } = require("node:fs/promises");
 
 
-   // this path is a uri from esm in windows, trim out the protocol
-   if (path.startsWith(`file:\\`)) // the \\ is due to the npm "callsite" package
-      path = path.slice(6);
-
-   path = decodeURIComponent(path);
-
-
    // read this file and parse it as json
    const file = await readFile(path);
    const contents = file.toString();
