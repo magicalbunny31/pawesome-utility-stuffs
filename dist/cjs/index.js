@@ -12,7 +12,6 @@ const formatPermissions = require("../../src/functions/formatPermissions.js");
 const getRelativeAbsolutePath = require("../../src/functions/getRelativeAbsolutePath.js");
 const noop = require("../../src/functions/noop.js");
 const number = require("../../src/functions/number.js");
-const parseJSONFile = require("../../src/functions/parseJSONFile.js");
 const partition = require("../../src/functions/partition.js");
 const respondToErrorInteraction = require("../../src/functions/respondToErrorInteraction.js");
 const respondToWrongUserMessageComponentInteraction = require("../../src/functions/respondToWrongUserMessageComponentInteraction.js");
@@ -39,7 +38,6 @@ module.exports = {
    getRelativeAbsolutePath,
    noop,
    number,
-   parseJSONFile,
    partition,
    respondToErrorInteraction,
    respondToWrongUserMessageComponentInteraction,
