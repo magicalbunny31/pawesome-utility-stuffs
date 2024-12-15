@@ -172,16 +172,15 @@ export function formatPermissions(permissionsInput: number | bigint): string[];
 
 /**
  * 🗃️ get an absolute filepath which is relative to the file this function was called in
- * @remarks 📣 if this is being run in esm with windows, the returned `path` will be an encoded uri starting with `file:\` (unless the final argument of `paths` is `true`)
- * @remarks ⌚ if this is being run in cjs, this may take a while to resolve the path
+ * @remarks 📣 (esm + windows) the returned `path` will **NOT** an encoded uri starting with `file:\`
+ * @remarks ⌚ (cjs) it may take a while to resolve the path
  * @param paths ⛓️‍💥 paths to join, same arguments as [`node:path`](https://nodejs.org/api/path.html)'s [`path.join()`](https://nodejs.org/api/path.html#pathjoinpaths)
- * @param paths 🔀 if this is being run in esm with windows, if the final argument is `true`, the returned `path` will **not** be an encoded uri starting with `file:\`
  * @example
  * // filepath of the script running this: `/home/bunny/fox/wolf/deer.js`
  * getRelativeAbsolutePath(`..`, `rabbit.js`);
  * // => `/home/bunny/fox/rabbit.js`
  */
-export function getRelativeAbsolutePath(...paths: (string | boolean)[]): string;
+export function getRelativeAbsolutePath(...paths: string[]): string;
 
 
 /**

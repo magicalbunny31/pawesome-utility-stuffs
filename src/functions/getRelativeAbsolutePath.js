@@ -9,15 +9,8 @@ module.exports = (...paths) => {
 
 
    // imports
-   const { join } = require("node:path");
+   const { join, sep } = require("node:path");
    const getCallSites = require("callsite");
-
-
-   // arguments
-   const ignoreUri = paths.at(-1) === true;
-
-   if (ignoreUri)
-      paths.pop();
 
 
    // get the directory of where this function was called and return the path from the arguments
@@ -26,13 +19,11 @@ module.exports = (...paths) => {
 
    let joinedPath = join(filename, `..`, ...paths);
 
-   if (process.platform !== `win32`) // not windows only: add the starting `/` if it doesn't already exist
-      if (!joinedPath.startsWith(`/`))
-         joinedPath = `/${joinedPath}`;
+   if (process.platform !== `win32` && !joinedPath.startsWith(sep)) // (not windows) add the starting `/` if it doesn't already exist
+      joinedPath = `/${joinedPath}`;
 
-   if (ignoreUri && !require.main) // esm only: remove the `file://` prefix from this uri
-      return decodeURIComponent(joinedPath.slice(6));
+   if (!require.main || joinedPath.startsWith(`file:${sep}`)) // (esm) remove the `file:/` prefix from this uri
+      joinedPath = decodeURIComponent(joinedPath.slice(6));
 
-   else
-      return joinedPath;
+   return joinedPath;
 };
