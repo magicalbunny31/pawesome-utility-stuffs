@@ -9,7 +9,6 @@ const emojis = require("../../src/functions/emojis.js");
 const findSimilar = require("../../src/functions/findSimilar.js");
 const formatBytes = require("../../src/functions/formatBytes.js");
 const formatPermissions = require("../../src/functions/formatPermissions.js");
-const getRelativeAbsolutePath = require("../../src/functions/getRelativeAbsolutePath.js");
 const noop = require("../../src/functions/noop.js");
 const number = require("../../src/functions/number.js");
 const partition = require("../../src/functions/partition.js");
@@ -35,7 +34,6 @@ module.exports = {
    findSimilar,
    formatBytes,
    formatPermissions,
-   getRelativeAbsolutePath,
    noop,
    number,
    partition,

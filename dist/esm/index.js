@@ -9,7 +9,6 @@ import emojis from "../../src/functions/emojis.js";
 import findSimilar from "../../src/functions/findSimilar.js";
 import formatBytes from "../../src/functions/formatBytes.js";
 import formatPermissions from "../../src/functions/formatPermissions.js";
-import getRelativeAbsolutePath from "../../src/functions/getRelativeAbsolutePath.js";
 import noop from "../../src/functions/noop.js";
 import number from "../../src/functions/number.js";
 import partition from "../../src/functions/partition.js";
@@ -35,7 +34,6 @@ export {
    findSimilar,
    formatBytes,
    formatPermissions,
-   getRelativeAbsolutePath,
    noop,
    number,
    partition,
