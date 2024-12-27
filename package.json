@@ -1,6 +1,6 @@
 {
    "name": "@magicalbunny31/pawesome-utility-stuffs",
-   "version": "2.0.9",
+   "version": "2.1.0",
    "description": "🐾 some pawesome utilities that i pretty much need or else my code will suck",
    "main": "dist/cjs/index.js",
    "module": "dist/esm/index.js",
@@ -24,7 +24,6 @@
    },
    "homepage": "https://github.com/magicalbunny31/pawesome-utility-stuffs#readme",
    "dependencies": {
-      "callsite": "^1.0.0",
       "discord.js": "^14.16.3",
       "emoji-regex": "^10.4.0"
    },
@@ -33,6 +32,6 @@
    },
    "devDependencies": {
       "eslint": "^9.17.0",
-      "globals": "^15.13.0"
+      "globals": "^15.14.0"
    }
 }
