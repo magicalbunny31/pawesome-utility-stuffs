@@ -2,12 +2,12 @@
    "name": "@magicalbunny31/pawesome-utility-stuffs",
    "version": "2.1.0",
    "description": "🐾 some pawesome utilities that i pretty much need or else my code will suck",
-   "main": "dist/cjs/index.js",
-   "module": "dist/esm/index.js",
+   "main": "./dist/cjs/index.js",
+   "module": "./dist/esm/index.js",
    "scripts": {
       "lint": "eslint ."
    },
-   "types": "types/index.d.ts",
+   "types": "./types/index.d.ts",
    "files": [
       "dist",
       "src",
