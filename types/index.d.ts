@@ -235,11 +235,11 @@ export function shuffle<T>(array: T[]): T[];
  * 🔨 strips indents off a multi-line template literals to form a formatted string
  * @param string 🗨️ template literals to strip indents off of
  * @example
- * strip(`
+ * strip`
  *    hai!
  *    hewwo!
  *    meowdy!
- * `);
+ * `;
  * // => `hai!\nhewwo!\nmeowdy!`
  */
 export function strip(text: string): string;
