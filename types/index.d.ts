@@ -1,4 +1,4 @@
-import { ActionRow, ApplicationEmoji, GuildMember, GuildTextBasedChannel, Interaction, MessageComponentInteraction, PermissionFlagsBits, User } from "discord.js";
+import { ApplicationEmoji, GuildMember, GuildTextBasedChannel, Interaction, MessageComponent, MessageComponentInteraction, PermissionFlagsBits, User } from "discord.js";
 
 
 /**
@@ -62,19 +62,19 @@ export function choice<T>(array: T[], choices: number): T[];
 
 
 /**
- * 💭 defer an `ActionRow` `ButtonComponent` on a `Message`
- * @param customId 🆔 custom_id of the `ButtonComponent` to display as deferred
- * @param components 📋 all `ActionRow`s (containing `MessageComponent`s) of the message
+ * 💭 set a [Button](https://discord.com/developers/docs/components/reference#button) component to a "deferred" state in a list of message `components`
+ * @param customId 🆔 custom_id of the [Button](https://discord.com/developers/docs/components/reference#button) component to set to a "deferred" state
+ * @param components 📋 all `component`s of the message
  */
-export function deferComponents(customId: string, components: ActionRow[]): ActionRow[];
+export function deferComponents(customId: string, components: MessageComponent[]): MessageComponent[];
 
 /**
- * 💭 defer an `ActionRow` `BaseSelectMenuComponent` on a `Message`
- * @param customId 🆔 custom_id of the `ButtonComponent` to display as deferred
- * @param values 👉 values of the `BaseSelectMenuComponent` that were selected
- * @param components 📋 all `ActionRow`s (containing `MessageComponent`s) of the message
+ * 💭 set a [String Select](https://discord.com/developers/docs/components/reference#string-select), [User Select](https://discord.com/developers/docs/components/reference#user-select), [Role Select](https://discord.com/developers/docs/components/reference#role-select), [Mentionable Select](https://discord.com/developers/docs/components/reference#mentionable-select), or [Channel Select](https://discord.com/developers/docs/components/reference#channel-select) component to a "deferred" state in a list of message `components`
+ * @param customId 🆔 custom_id of the [String Select](https://discord.com/developers/docs/components/reference#string-select), [User Select](https://discord.com/developers/docs/components/reference#user-select), [Role Select](https://discord.com/developers/docs/components/reference#role-select), [Mentionable Select](https://discord.com/developers/docs/components/reference#mentionable-select), or [Channel Select](https://discord.com/developers/docs/components/reference#channel-select) component to display as deferred
+ * @param components 📋 all `component`s of the message
+ * @param values 👉 values of the [String Select](https://discord.com/developers/docs/components/reference#string-select), [User Select](https://discord.com/developers/docs/components/reference#user-select), [Role Select](https://discord.com/developers/docs/components/reference#role-select), [Mentionable Select](https://discord.com/developers/docs/components/reference#mentionable-select), or [Channel Select](https://discord.com/developers/docs/components/reference#channel-select) component that were selected
  */
-export function deferComponents(customId: string, values: string[], components: ActionRow[]): ActionRow[];
+export function deferComponents(customId: string, components: MessageComponent[], values: string[]): MessageComponent[];
 
 
 /**
