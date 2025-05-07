@@ -81,7 +81,6 @@ export function deferComponents(customId: string, values: string[], components: 
  * 🦊 discord-formatted emoji strings
  * @param applicationEmojis 🤖 array of this app's `ApplicationEmoji`s - don't specify this argument to only return emojis from guilds
  * @returns ❓ this returns an [`Object`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) combining this app's `ApplicationEmoji`s (optional) and emojis from guilds
- * @example
  */
 export function emojis(applicationEmojis?: ApplicationEmoji[]): { [emojiName: string]: string };
 
