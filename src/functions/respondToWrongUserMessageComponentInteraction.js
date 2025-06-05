@@ -1,5 +1,5 @@
 
-const { EmbedBuilder, heading, HeadingLevel, italic, quote } = require("discord.js");
+const { ContainerBuilder, heading, HeadingLevel, italic, inlineCode, quote, MessageFlags, subtext, SeparatorBuilder, SeparatorSpacingSize, TextDisplayBuilder } = require("discord.js");
 
 
 const getInteractionType = interaction => {
@@ -66,26 +66,40 @@ module.exports = async (interaction, expectedUser, receivedUser) => {
    const response = getResponse(allEmojis);
 
 
-   // embeds
-   const embeds = [
-      new EmbedBuilder()
-         .setColor(colours.red)
-         .setDescription(
-            [
-               heading(`${allEmojis.no} only ${expectedUser} can interact with this ${type} - not you!`, HeadingLevel.Three),
-               quote(response)
-            ]
-               .join(`\n`)
+   // components
+   const components = [
+      new ContainerBuilder()
+         .setAccentColor(colours.red)
+         .addTextDisplayComponents(
+            new TextDisplayBuilder()
+               .setContent(
+                  [
+                     heading(`${allEmojis.no} only ${expectedUser} can interact with this ${type} - not you!`, HeadingLevel.Three),
+                     quote(response)
+                  ]
+                     .join(`\n`)
+               )
          )
-         .setFooter({
-            text: `🆔 ${interaction.id}`
-         })
+         .addSeparatorComponents(
+            new SeparatorBuilder()
+               .setDivider(true)
+               .setSpacing(SeparatorSpacingSize.Small)
+         )
+         .addTextDisplayComponents(
+            new TextDisplayBuilder()
+               .setContent(
+                  subtext(`${allEmojis.info} ${inlineCode(interaction.id)}`)
+               )
+         )
    ];
 
 
    // respond to the interaction
    await interaction.reply({
-      embeds,
-      ephemeral: true
+      components,
+      flags: [
+         MessageFlags.Ephemeral,
+         MessageFlags.IsComponentsV2
+      ]
    });
 };

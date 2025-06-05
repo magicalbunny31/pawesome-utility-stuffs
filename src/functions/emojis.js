@@ -36,8 +36,9 @@ const globalEmojis = {
 
    "mutant_standard": "<:mutant_standard:911322978313179187>",
 
-   "yes": "<:yes:792173102146519051>",
-   "no":  "<:no:792173102377205811>",
+   "yes":  "<:yes:792173102146519051>",
+   "no":   "<:no:792173102377205811>",
+   "info": "<:info:792165588331921489>",
 
    "furry_pride":    "<:furry_pride:797613808147365898>",
    "rainbow_flag":   "<:rainbow_flag:1108130986723651664>",

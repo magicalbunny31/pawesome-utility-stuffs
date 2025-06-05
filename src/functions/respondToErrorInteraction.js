@@ -1,4 +1,4 @@
-const { AttachmentBuilder, EmbedBuilder, escapeItalic, heading, HeadingLevel, hyperlink, italic, MessageFlags, quote, spoiler, unorderedList } = require("discord.js");
+const { AttachmentBuilder, ContainerBuilder, escapeItalic, FileBuilder, heading, HeadingLevel, hyperlink, inlineCode, italic, MessageFlags, quote, SeparatorBuilder, SeparatorSpacingSize, spoiler, subtext, TextDisplayBuilder, unorderedList } = require("discord.js");
 
 
 const getInteractionType = interaction => {
@@ -90,20 +90,31 @@ module.exports = async (interaction, guildInvite = `https://nuzzles.dev/discord`
    const response = getResponse(allEmojis);
 
 
-   // embeds
-   const embeds = [
-      new EmbedBuilder()
-         .setColor(colours.red)
-         .setDescription(
-            [
-               heading(`${allEmojis.rip} an error occurred with this ${type}..`, HeadingLevel.Three),
-               quote(response)
-            ]
-               .join(`\n`)
+   // components
+   const components = [
+      new ContainerBuilder()
+         .setAccentColor(colours.red)
+         .addTextDisplayComponents(
+            new TextDisplayBuilder()
+               .setContent(
+                  [
+                     heading(`${allEmojis.rip} an error occurred with this ${type}..`, HeadingLevel.Three),
+                     quote(response)
+                  ]
+                     .join(`\n`)
+               )
          )
-         .setFooter({
-            text: `🆔 ${interaction.id}`
-         })
+         .addSeparatorComponents(
+            new SeparatorBuilder()
+               .setDivider(true)
+               .setSpacing(SeparatorSpacingSize.Small)
+         )
+         .addTextDisplayComponents(
+            new TextDisplayBuilder()
+               .setContent(
+                  subtext(`${allEmojis.info} ${inlineCode(interaction.id)}`)
+               )
+         )
    ];
 
 
@@ -121,9 +132,11 @@ module.exports = async (interaction, guildInvite = `https://nuzzles.dev/discord`
       try {
          await interaction.editReply({
             content: null,
-            embeds,
-            components: [],
-            files: []
+            components,
+            files: [],
+            flags: [
+               MessageFlags.IsComponentsV2
+            ]
          });
 
       } catch {
@@ -137,17 +150,24 @@ module.exports = async (interaction, guildInvite = `https://nuzzles.dev/discord`
       try {
          // attempt to follow-up ephemerally
          await interaction.followUp({
-            content: [
-               heading(`${allEmojis.context_menu_command} attached is the error log`, HeadingLevel.Three),
-               unorderedList([
-                  `don't worry: the developers have received a copy of this too~`,
-                  `wanna learn more about this error? feel free to send this in the ${hyperlink(`support server`, guildInvite)}!`,
-                  [
-                     guildInvite
-                  ]
-               ])
-            ]
-               .join(`\n`),
+            components: [
+               new TextDisplayBuilder()
+                  .setContent(
+                     [
+                        heading(`${allEmojis.context_menu_command} attached is the error log`, HeadingLevel.Three),
+                        unorderedList([
+                           `don't worry: the developers have received a copy of this too~`,
+                           `wanna learn more about this error? feel free to send this in the ${hyperlink(`support server`, guildInvite)}!`,
+                           [
+                              guildInvite
+                           ]
+                        ])
+                     ]
+                        .join(`\n`)
+                  ),
+               new FileBuilder()
+                  .setURL(`attachment://error.log`)
+            ],
             files: [
                new AttachmentBuilder()
                   .setFile(
@@ -157,9 +177,10 @@ module.exports = async (interaction, guildInvite = `https://nuzzles.dev/discord`
             ],
             flags: [
                MessageFlags.SuppressEmbeds,
-               MessageFlags.SuppressNotifications
-            ],
-            ephemeral: true
+               MessageFlags.Ephemeral,
+               MessageFlags.SuppressNotifications,
+               MessageFlags.IsComponentsV2
+            ]
          });
 
       } catch {
