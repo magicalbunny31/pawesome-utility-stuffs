@@ -8,9 +8,9 @@ that's it ✨
 
 ## 💻 installation
 
-📦 **[Node.js](https://nodejs.org "https://nodejs.org 🔗") >=20 is required!**
+📦 **[Node.js](https://nodejs.org) >=22.12.0 is required!**
 
-💻 you can then install this repository via [npm](https://www.npmjs.com "https://www.npmjs.com 🔗"), [pnpm](https://pnpm.io "https://pnpm.io 🔗") or [yarn](https://yarnpkg.com "https://yarnpkg.com 🔗")~
+💻 you can then install this repository via [npm](https://www.npmjs.com), [pnpm](https://pnpm.io) or [yarn](https://yarnpkg.com)~
 
 ```sh-session
 npm install github:magicalbunny31/pawesome-utility-stuffs
