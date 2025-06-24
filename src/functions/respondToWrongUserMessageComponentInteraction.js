@@ -32,7 +32,7 @@ const getResponse = (emojis, expectedUser, receivedUser) => {
       `${emojis.furthinking} ${expectedUser} ≠ ${receivedUser}`,
       `${emojis.why} no, no, no!`,
       `${emojis.aie} huh?`,
-      `${emojis.oi} this is Not a good habit to get into`,
+      `${emojis.oi} this is NOT a good habit to get into`,
       `${emojis.stop} IT WAS A MISINPUT`,
       `${emojis.rip} nah dog`,
       `${emojis.noooo} that wasn't supposed to happen!`,
