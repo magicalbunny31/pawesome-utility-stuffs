@@ -41,7 +41,7 @@ const getResponse = (emojis, expectedUser, receivedUser) => {
       `${emojis.bap} it's so over`,
       `${emojis.shy} awh!`
    ]
-      .filter(text => !text.startsWith(`undefined`));
+      .filter(text => !text.startsWith(`undefined`)); // remove emojis that formatted as `undefined`
 
    return choice(texts);
 };
