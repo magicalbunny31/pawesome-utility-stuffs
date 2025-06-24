@@ -63,7 +63,7 @@ module.exports = async (interaction, expectedUser, receivedUser) => {
 
    // some other variables
    const type = getInteractionType(interaction);
-   const response = getResponse(allEmojis);
+   const response = getResponse(allEmojis, expectedUser, receivedUser);
 
 
    // components
