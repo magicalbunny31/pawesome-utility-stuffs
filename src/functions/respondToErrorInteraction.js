@@ -121,7 +121,9 @@ module.exports = async (interaction, guildInvite = `https://nuzzles.dev/discord`
    try {
       // attempt to defer the reply ephemerally, if not then assume the interaction has been replied to already
       await interaction.deferReply({
-         ephemeral: true
+         flags: [
+            MessageFlags.Ephemeral
+         ]
       });
 
    } catch {
