@@ -39,7 +39,24 @@ const getResponse = (emojis, expectedUser, receivedUser) => {
       `${emojis.boooo} whar`,
       `${emojis.aie} no`,
       `${emojis.bap} it's so over`,
-      `${emojis.shy} awh!`
+      `${emojis.shy} awh!`,
+      `${emojis.stop} STOP`,
+      `${emojis.oi} it is not wise to interact with someone else's menus!`,
+      `${emojis.mhn} you'll need to get this menu for yourself to interact with it~`,
+      `${emojis.mhn} phew! stopped before anything bad happened..`,
+      `${emojis.oi} think you're tough now, tough guy?`,
+      `${emojis.oi} thought that was funny, funny guy?`,
+      `${emojis.oi} HEY!!!!!`,
+      `${emojis.bap} keep those paws where i can see them!`,
+      `${emojis.boooo} well that wasn't fun`,
+      `${emojis.shy} sorry about that!`,
+      `${emojis.beg} maybe next time..`,
+      `${emojis.why} why did you do that?!`,
+      `${emojis.why} why did that happen?!`,
+      `${emojis.concern} gulp..`,
+      `${emojis.bap} you don't get any cookies for that!`,
+      `${emojis.rip} it's actually over`,
+      `${emojis.stop} HUH`
    ]
       .filter(text => !text.startsWith(`undefined`)); // remove emojis that formatted as `undefined`
 
