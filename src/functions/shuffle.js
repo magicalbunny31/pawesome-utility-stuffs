@@ -1,1 +1,1 @@
-module.exports = array => array.sort(() => .5 - Math.random());
+module.exports = array => array[Math.floor(Math.random() * array.length)]
