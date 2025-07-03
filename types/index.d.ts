@@ -221,7 +221,7 @@ export function set<T>(array: T[]): T[];
 
 
 /**
- * 🔀 shuffle an `Array`
+ * 🔀 shuffle an `Array` in-place
  * @param array 📃 `Array` to shuffle
  * @example
  * shuffle([ `🐰`, `🦊`, `🐺`, `🦌` ]);
