@@ -1,5 +1,4 @@
 import colours from "../../src/data/colours.js";
-import emoji from "../../src/data/emoji.js";
 
 import autoArray from "../../src/functions/autoArray.js";
 import checkChatInputCommandPermissions from "../../src/functions/checkChatInputCommandPermissions.js";
@@ -24,7 +23,6 @@ import wait from "../../src/functions/wait.js";
 
 export {
    colours,
-   emoji,
 
    autoArray,
    checkChatInputCommandPermissions,

@@ -1,5 +1,4 @@
 const colours = require("../../src/data/colours.js");
-const emoji = require("../../src/data/emoji.js");
 
 const autoArray = require("../../src/functions/autoArray.js");
 const checkChatInputCommandPermissions = require("../../src/functions/checkChatInputCommandPermissions.js");
@@ -24,7 +23,6 @@ const wait = require("../../src/functions/wait.js");
 
 module.exports = {
    colours,
-   emoji,
 
    autoArray,
    checkChatInputCommandPermissions,

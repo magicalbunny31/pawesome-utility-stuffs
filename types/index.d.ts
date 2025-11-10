@@ -11,13 +11,6 @@ export const colours: typeof import("../src/data/colours.js");
 
 
 /**
- * 🦊 regular expression to match emojis in unicode v16.0.0
- * @see https://www.npmjs.com/package/emoji-regex
- */
-export const emoji: RegExp;
-
-
-/**
  * 🔁 automatically create an array with values filled from function
  * @param length #️⃣ how long this array should be
  * @param func 📃 function to run for each element of this array
