@@ -1,6 +1,6 @@
 {
    "name": "@magicalbunny31/pawesome-utility-stuffs",
-   "version": "2.3.5",
+   "version": "2.3.6",
    "description": "🐾 some pawesome utilities that i pretty much need or else my code will suck",
    "main": "./dist/cjs/index.js",
    "module": "./dist/esm/index.js",
@@ -27,10 +27,10 @@
       "node": ">=22.12.0"
    },
    "dependencies": {
-      "discord.js": "^14.24.2"
+      "discord.js": "^14.25.1"
    },
    "devDependencies": {
-      "eslint": "^9.39.1",
-      "globals": "^16.5.0"
+      "eslint": "^10.0.2",
+      "globals": "^17.4.0"
    }
 }
