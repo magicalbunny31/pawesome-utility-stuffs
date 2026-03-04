@@ -50,7 +50,7 @@ module.exports = (customId, emojis, components, values) => {
 
 
    if (foundComponent.type === ComponentType.Button) { // this is a button
-      foundComponent.emoji = parseEmoji(emojis().loading);
+      foundComponent.emoji = parseEmoji(emojis.loading);
 
 
    } else if (foundComponent.type === ComponentType.StringSelect) { // this is a string select menu
@@ -62,7 +62,7 @@ module.exports = (customId, emojis, components, values) => {
       for (const option of options)
          if (values.includes(option.value))
             Object.assign(option, {
-               emoji: parseEmoji(emojis().loading),
+               emoji: parseEmoji(emojis.loading),
                default: true
             });
 
