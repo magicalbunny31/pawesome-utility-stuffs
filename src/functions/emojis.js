@@ -9,7 +9,6 @@ const globalEmojis = {
    "flooded_area": "<:flooded_area:995461994989756526>",
 
 
-   "loading":       "<a:loading:701942569210478623>",
    "typing":        "<a:typing:905237955428352000>",
 
    "app":          "<a:app:1295486985644937328>",
@@ -150,7 +149,7 @@ module.exports = applicationEmojis => {
       ({
          ...previousEmoji,
          [currentEmoji.name]: formatEmoji(currentEmoji.id, currentEmoji.animated)
-            .replace(`_`, currentEmoji.name)
+            .replace(`emoji`, currentEmoji.name)
       }),
       {}
    )

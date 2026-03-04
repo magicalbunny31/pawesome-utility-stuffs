@@ -54,12 +54,14 @@ export function choice<T>(array: T[]): T;
 export function choice<T>(array: T[], choices: number): T[];
 
 
+type EmojisMap = ReturnType<typeof emojis>;
+
 /**
  * 💭 set a [Button](https://discord.com/developers/docs/components/reference#button) component to a "deferred" state in a list of message `components`
  * @param customId 🆔 custom_id of the [Button](https://discord.com/developers/docs/components/reference#button) component to set to a "deferred" state
  * @param components 📋 all `component`s of the message
  */
-export function deferComponents(customId: string, components: MessageComponent[]): MessageComponent[];
+export function deferComponents(customId: string, emojis: EmojisMap, components: MessageComponent[]): MessageComponent[];
 
 /**
  * 💭 set a [String Select](https://discord.com/developers/docs/components/reference#string-select), [User Select](https://discord.com/developers/docs/components/reference#user-select), [Role Select](https://discord.com/developers/docs/components/reference#role-select), [Mentionable Select](https://discord.com/developers/docs/components/reference#mentionable-select), or [Channel Select](https://discord.com/developers/docs/components/reference#channel-select) component to a "deferred" state in a list of message `components`
@@ -67,7 +69,7 @@ export function deferComponents(customId: string, components: MessageComponent[]
  * @param components 📋 all `component`s of the message
  * @param values 👉 values of the [String Select](https://discord.com/developers/docs/components/reference#string-select), [User Select](https://discord.com/developers/docs/components/reference#user-select), [Role Select](https://discord.com/developers/docs/components/reference#role-select), [Mentionable Select](https://discord.com/developers/docs/components/reference#mentionable-select), or [Channel Select](https://discord.com/developers/docs/components/reference#channel-select) component that were selected
  */
-export function deferComponents(customId: string, components: MessageComponent[], values: string[]): MessageComponent[];
+export function deferComponents(customId: string, emojis: EmojisMap, components: MessageComponent[], values: string[]): MessageComponent[];
 
 
 /**

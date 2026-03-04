@@ -1,6 +1,5 @@
-module.exports = (customId, components, values) => {
+module.exports = (customId, emojis, components, values) => {
    // imports
-   const { emojis } = require("../../");
    const { ComponentType, parseEmoji } = require("discord.js");
 
 
