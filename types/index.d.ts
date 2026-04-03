@@ -4,7 +4,7 @@
  * colours.bunny_gold;
  * // => 14988288
  */
-export const colours: typeof import("../src/colours.js");
+export const colours: typeof import("../src/colours.js").default;
 
 
 /**
