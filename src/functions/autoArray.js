@@ -1,1 +1,0 @@
-module.exports = (length, func) => Array.from({ length }, func);

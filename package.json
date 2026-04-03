@@ -1,36 +1,93 @@
 {
    "name": "@magicalbunny31/pawesome-utility-stuffs",
-   "version": "2.3.7",
-   "description": "🐾 some pawesome utilities that i pretty much need or else my code will suck",
-   "main": "./dist/cjs/index.js",
-   "module": "./dist/esm/index.js",
-   "scripts": {
-      "lint": "eslint ."
+   "version": "3.0.0-dev.1",
+   "type": "module",
+   "exports": {
+      ".": {
+         "types": "./types/index.d.ts",
+         "import": "./src/index.js"
+      },
+      "./discord": {
+         "types": "./types/discord/index.d.ts",
+         "import": "./src/discord/index.js"
+      },
+      "./discord-voice": {
+         "types": "./types/discord-voice/index.d.ts",
+         "import": "./src/discord-voice/index.js"
+      },
+      "./firestore": {
+         "types": "./types/firestore/index.d.ts",
+         "import": "./src/firestore/index.js"
+      },
+      "./fs": {
+         "types": "./types/fs/index.d.ts",
+         "import": "./src/fs/index.js"
+      },
+      "./aws": {
+         "types": "./types/aws/index.d.ts",
+         "import": "./src/aws/index.js"
+      }
    },
-   "types": "./types/index.d.ts",
    "files": [
-      "dist",
       "src",
       "types"
    ],
+   "scripts": {
+      "lint": "eslint ."
+   },
    "repository": {
       "type": "git",
       "url": "git+https://github.com/magicalbunny31/pawesome-utility-stuffs.git"
    },
-   "author": "magicalbunny31",
+   "contributors": [
+      {
+         "name": "magicalbunny31",
+         "email": "hewwo@nuzzles.dev",
+         "url": "https://nuzzles.dev/"
+      }
+   ],
    "license": "MIT",
    "bugs": {
       "url": "https://github.com/magicalbunny31/pawesome-utility-stuffs/issues"
    },
    "homepage": "https://nuzzles.dev/dev/pawesome-utility-stuffs",
-   "engines": {
-      "node": ">=22.12.0"
+   "peerDependencies": {
+      "@aws-sdk/client-s3": "^3.1024.0",
+      "@aws-sdk/lib-storage": "^3.1024.0",
+      "@aws-sdk/s3-request-presigner": "^3.1024.0",
+      "@discordjs/voice": "^0.19.2",
+      "@google-cloud/firestore": "^8.3.0",
+      "discord.js": "^14.26.2",
+      "file-type": "^22.0.0"
    },
-   "dependencies": {
-      "discord.js": "^14.25.1"
+   "peerDependenciesMeta": {
+      "@aws-sdk/client-s3": {
+         "optional": true
+      },
+      "@aws-sdk/lib-storage": {
+         "optional": true
+      },
+      "@aws-sdk/s3-request-presigner": {
+         "optional": true
+      },
+      "@discordjs/voice": {
+         "optional": true
+      },
+      "@google-cloud/firestore": {
+         "optional": true
+      },
+      "discord.js": {
+         "optional": true
+      },
+      "file-type": {
+         "optional": true
+      },
+      "string-similarity": {
+         "optional": true
+      }
    },
    "devDependencies": {
-      "eslint": "^10.0.2",
+      "eslint": "^10.2.0",
       "globals": "^17.4.0"
    }
 }

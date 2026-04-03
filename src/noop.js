@@ -1,0 +1,4 @@
+/**
+ * @returns {void}
+ */
+export default () => {};

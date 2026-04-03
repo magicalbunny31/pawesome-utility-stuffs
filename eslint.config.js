@@ -1,15 +1,15 @@
-const globals = require("globals");
+import Globals from "globals";
 
 
-module.exports = [{
+export default [{
    files: [
       `**/*`
    ],
 
    languageOptions: {
       globals: {
-         ...globals.node,
-         ...globals.es2024
+         ...Globals.node,
+         ...Globals.es2026
       }
    },
 
