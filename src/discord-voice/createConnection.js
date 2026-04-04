@@ -13,7 +13,7 @@ import { entersState, joinVoiceChannel, VoiceConnectionDisconnectReason, VoiceCo
  * @param {boolean} [selfMute=true]
  * @returns {import("@discordjs/voice").VoiceConnection}
  */
-export const createConnection = (voiceAdapterCreator, channelId, guildId, selfDeaf = true, selfMute = true) => {
+export default (voiceAdapterCreator, channelId, guildId, selfDeaf = true, selfMute = true) => {
    const connection = joinVoiceChannel({
       adapterCreator: voiceAdapterCreator,
       channelId,

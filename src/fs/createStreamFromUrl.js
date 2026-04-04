@@ -6,7 +6,7 @@ import { fileTypeStream } from "file-type";
  * @param {string} userAgent
  * @returns {Promise<import("file-type").AnyWebReadableByteStreamWithFileType>}
  */
-export const createStreamFromUrl = async (url, userAgent) => {
+export default async (url, userAgent) => {
    // start streaming this url, awaiting the first chunk of data so it an be passed to fileTypeStream
    const request = await fetch(url, {
       headers: {
