@@ -35,7 +35,7 @@ export async function getKeys(client: S3Client, bucket: string, prefix: string):
  * @param bucket 🪣 which bucket this file will be uploaded
  * @param key 🏷️ the key that this file will have
  * @param data 📦 data to upload; the mime type for this `data` will be set if the passed parameter is the stream returned from [`file-type`](https://github.com/sindresorhus/file-type)'s `fileTypeStream`
- * @returns 📄 the key of the files that was uploaded
+ * @returns 📄 the key of the file that was uploaded
  */
 export async function uploadFile(client: S3Client, bucket: string, key: string, data: BodyDataTypes | import("file-type").AnyWebReadableByteStreamWithFileType): Promise<string>;
 

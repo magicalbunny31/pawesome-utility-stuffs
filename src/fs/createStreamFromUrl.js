@@ -4,7 +4,7 @@ import { fileTypeStream } from "file-type";
 /**
  * @param {string} url
  * @param {string} userAgent
- * @returns {Promise<import("file-type").AnyWebReadableByteStreamWithFileType>}
+ * @returns {Promise<import("file-type").AnyWebReadableByteStreamWithFileType | undefined>}
  */
 export default async (url, userAgent) => {
    // start streaming this url, awaiting the first chunk of data so it an be passed to fileTypeStream

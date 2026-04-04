@@ -1,11 +1,12 @@
 {
    "name": "@magicalbunny31/pawesome-utility-stuffs",
-   "version": "3.0.0-dev.4",
+   "version": "3.0.0-dev.5",
    "type": "module",
    "exports": {
       ".": {
          "types": "./types/index.d.ts",
-         "import": "./src/index.js"
+         "worker": "./src/worker.js",
+         "import": "./src/import.js"
       },
       "./discord": {
          "types": "./types/discord/index.d.ts",

@@ -194,6 +194,17 @@ export async function tryOrUndefined<T>(func: T): Promise<T>?;
 
 
 /**
+ * 🤖 create a user agent string for this project
+ * @param {string} name 📛 name of this project
+ * @param {string} version 🏷️ version of this project
+ * @param {string} homepage 🌐 homepage containing information about this project
+ * @param {string} email 📧 contact email for people to contact regarding this project
+ */
+export function userAgent(name: string, version: string, homepage: string, email: string): string;
+
+
+
+/**
  * ⏱️ pretty much "pauses" asynchronous code
  * @param delay 🔢 delay in milliseconds to wait for
  */
