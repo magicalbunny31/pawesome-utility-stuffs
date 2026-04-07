@@ -4,13 +4,13 @@ import uploadFile from "./uploadFile.js";
 /**
  * @param {import("@aws-sdk/client-s3").S3Client} client
  * @param {string} bucket
- * @param {{ key: string; data: import("@aws-sdk/lib-storage").BodyDataTypes | import("file-type").AnyWebReadableByteStreamWithFileType; }[]} data
- * @returns {Promise<{ bucket: string; key: string; }>}
+ * @param {{ key: string; data: import("@aws-sdk/lib-storage").BodyDataTypes; contentType: string; }[]} data
+ * @returns {Promise<({ bucket: string; key: string; } | undefined)[]>}
  */
 export default async (client, bucket, data) => {
    // start uploading these files
    const dataToUpload = data.map(async data =>
-      await uploadFile(client, bucket, data.key, data.data)
+      await uploadFile(client, bucket, data.key, data.data, data.contentType)
    );
 
 

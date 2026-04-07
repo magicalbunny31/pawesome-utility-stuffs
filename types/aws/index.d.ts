@@ -29,15 +29,28 @@ export function formatPublicUrl(subdomain: string, key: string): string;
 export async function getKeys(client: S3Client, bucket: string, prefix: string): Promise<string[]>;
 
 
+interface UploadedFile {
+   /**
+    * 🪣 the bucket that this file was uploaded to
+    */
+   bucket: string;
+
+   /**
+    * 🏷️ the key that this file has
+    */
+   key: string;
+};
+
 /**
  * 📤 upload a file
  * @param client 🗝️ s3 client to use
  * @param bucket 🪣 which bucket this file will be uploaded
  * @param key 🏷️ the key that this file will have
- * @param data 📦 data to upload; the mime type for this `data` will be set if the passed parameter is the stream returned from [`file-type`](https://github.com/sindresorhus/file-type)'s `fileTypeStream`
- * @returns 📄 the key of the file that was uploaded
+ * @param data 📦 data to upload
+ * @param contentType ❔ content type for this data
+ * @returns 📄 the bucket and key of this uploaded file
  */
-export async function uploadFile(client: S3Client, bucket: string, key: string, data: BodyDataTypes | import("file-type").AnyWebReadableByteStreamWithFileType): Promise<string>;
+export async function uploadFile(client: S3Client, bucket: string, key: string, data: BodyDataTypes, contentType: string): Promise<UploadedFile>;
 
 
 interface UploadFilesConfig {
@@ -47,9 +60,15 @@ interface UploadFilesConfig {
    key: string;
 
    /**
-    * 📄 data to upload; the mime type for this `data` will be set if the passed parameter is the stream returned from [`file-type`](https://github.com/sindresorhus/file-type)'s `fileTypeStream`
+    * 📄 data to upload
     */
-   data: BodyDataTypes | import("file-type").AnyWebReadableByteStreamWithFileType;
+   data: BodyDataTypes;
+
+
+   /**
+    * ❔ content type for this data
+    */
+   contentType: string;
 };
 
 /**
@@ -57,6 +76,6 @@ interface UploadFilesConfig {
  * @param client 🗝️ s3 client to use
  * @param bucket 🪣 which bucket this file will be uploaded
  * @param data 🗃️ list of data to upload
- * @returns 📄 the keys of the files that were uploaded, or `undefined` if it failed to upload
+ * @returns 📄 the bucket and keys of these uploaded files, or `undefined` if it failed to upload
  */
-export async function uploadFiles(client: S3Client, bucket: string, data: UploadFilesConfig[]): Promise<(string | undefined)[]>;
+export async function uploadFiles(client: S3Client, bucket: string, data: UploadFilesConfig[]): Promise<(UploadedFile | undefined)[]>;

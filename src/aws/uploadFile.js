@@ -5,10 +5,11 @@ import { Upload } from "@aws-sdk/lib-storage";
  * @param {import("@aws-sdk/client-s3").S3Client} client
  * @param {string} bucket
  * @param {string} key
- * @param {import("@aws-sdk/lib-storage").BodyDataTypes | import("file-type").AnyWebReadableByteStreamWithFileType} data
+ * @param {import("@aws-sdk/lib-storage").BodyDataTypes} data
+ * @param {string} contentType
  * @returns {Promise<{ bucket: string; key: string; }>}
  */
-export default async (client, bucket, key, data) => {
+export default async (client, bucket, key, data, contentType) => {
    // configure and start uploading this data
    const upload = new Upload({
       client,
@@ -16,7 +17,7 @@ export default async (client, bucket, key, data) => {
          Bucket: bucket,
          Key: key,
          Body: data,
-         ContentType: data.fileType?.mime
+         ContentType: contentType
       }
    });
 

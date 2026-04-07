@@ -1,6 +1,6 @@
 {
    "name": "@magicalbunny31/pawesome-utility-stuffs",
-   "version": "3.0.0-dev.5",
+   "version": "3.0.0-dev.6",
    "type": "module",
    "exports": {
       ".": {
@@ -53,9 +53,9 @@
    },
    "homepage": "https://nuzzles.dev/dev/pawesome-utility-stuffs",
    "peerDependencies": {
-      "@aws-sdk/client-s3": "^3.1024.0",
-      "@aws-sdk/lib-storage": "^3.1024.0",
-      "@aws-sdk/s3-request-presigner": "^3.1024.0",
+      "@aws-sdk/client-s3": "^3.1025.0",
+      "@aws-sdk/lib-storage": "^3.1025.0",
+      "@aws-sdk/s3-request-presigner": "^3.1025.0",
       "@discordjs/voice": "^0.19.2",
       "@google-cloud/firestore": "^8.3.0",
       "discord.js": "^14.26.2",
