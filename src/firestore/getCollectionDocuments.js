@@ -1,5 +1,6 @@
 /**
  * @param {import("@google-cloud/firestore").CollectionReference | import("@google-cloud/firestore").Query} collectionRef
+ * @returns {Promise<import("@google-cloud/firestore").QueryDocumentSnapshot[]>}
  */
 export default async collectionRef => {
    // fetch this collection or collection query
@@ -10,12 +11,5 @@ export default async collectionRef => {
 
 
    // get and return the data
-   const data = snapshot.docs.map(docSnap =>
-      ({
-         id: docSnap.id,
-         data: docSnap.data()
-      })
-   );
-
-   return data;
+   return snapshot.docs;
 };
