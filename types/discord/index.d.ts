@@ -12,7 +12,9 @@ export class BaseCommand {
    public interaction: BaseCommandInteraction;
 
    /**
-    * 🔢 get a id of this app's commands
+    * 🔢 get an id of this app's commands
+    *
+    * 🌐 application commands are queried before guild commands
     * @param commandName 🏷️ name of the command to get the id of
     */
    public async getCommandId(commandName: string = this.interaction.commandName): Promise<Snowflake>;

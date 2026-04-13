@@ -21,9 +21,20 @@ export default class BaseCommand {
       if (this.interaction.isChatInputCommand() && this.interaction.commandName === commandName) // if the commandName is the same as this command's name ("fox") then the command id is found within the this.interaction object
          return this.interaction.commandId;
 
-      else { // fetch all commands and return the id of the command
-         const commands = await this.interaction.client.application.commands.fetch();
-         const commandId = commands.find(command => command.name === commandName)?.id ?? 0;
+      else {
+         let commandId;
+
+         // fetch all application commands and return the id of the command
+         const applicationCommands = await this.interaction.client.application.commands.fetch();
+         commandId = applicationCommands.find(command => command.name === commandName)?.id ?? 0;
+
+         // if there's command id, fetch all application commands and return the id of the command
+         if (!commandId) {
+            const guildCommands = await this.interaction.guild.commands.fetch();
+            commandId = guildCommands.find(command => command.name === commandName)?.id ?? 0;
+         };
+
+         // return the command id
          return commandId;
       };
    };
