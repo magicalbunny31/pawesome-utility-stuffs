@@ -1,6 +1,6 @@
 {
    "name": "@magicalbunny31/pawesome-utility-stuffs",
-   "version": "3.0.0-dev.8",
+   "version": "3.0.0-dev.9",
    "type": "module",
    "exports": {
       ".": {
@@ -57,8 +57,8 @@
       "@aws-sdk/lib-storage": "^3.1030.0",
       "@aws-sdk/s3-request-presigner": "^3.1030.0",
       "@discordjs/voice": "^0.19.2",
-      "@google-cloud/firestore": "^8.3.0",
-      "discord.js": "^14.26.2",
+      "@google-cloud/firestore": "^8.5.0",
+      "discord.js": "^14.26.3",
       "file-type": "^22.0.1"
    },
    "peerDependenciesMeta": {

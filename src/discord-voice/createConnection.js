@@ -2,7 +2,7 @@ import destroyConnection from "./destroyConnection.js";
 import isConnectionDestroyed from "./isConnectionDestroyed.js";
 import wait from "../wait.js";
 
-import { entersState, joinVoiceChannel, VoiceConnectionDisconnectReason, VoiceConnectionStatus } from "@discordjs/voice";
+import { entersState, getVoiceConnection, joinVoiceChannel, VoiceConnectionDisconnectReason, VoiceConnectionStatus } from "@discordjs/voice";
 
 
 /**
@@ -14,6 +14,14 @@ import { entersState, joinVoiceChannel, VoiceConnectionDisconnectReason, VoiceCo
  * @returns {import("@discordjs/voice").VoiceConnection}
  */
 export default (voiceAdapterCreator, channelId, guildId, selfDeaf = true, selfMute = true) => {
+   /**
+    * try and prevent zombie connections that can break this logic
+    * this can occur when the bot was restarted and attempts to reconnect to a voice channel it was previously in (but the bot never had the chance to automatically disconnect due to the previous terminated process)
+    */
+   const existingConnection = getVoiceConnection(guildId);
+   if (existingConnection)
+      existingConnection.destroy();
+
    const connection = joinVoiceChannel({
       adapterCreator: voiceAdapterCreator,
       channelId,
