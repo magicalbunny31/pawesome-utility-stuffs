@@ -2,7 +2,7 @@ import destroyConnection from "./destroyConnection.js";
 import isConnectionDestroyed from "./isConnectionDestroyed.js";
 import wait from "../wait.js";
 
-import { entersState, getVoiceConnection, joinVoiceChannel, VoiceConnectionDisconnectReason, VoiceConnectionStatus } from "@discordjs/voice";
+import { entersState, joinVoiceChannel, VoiceConnectionDisconnectReason, VoiceConnectionStatus } from "@discordjs/voice";
 
 
 /**
@@ -13,15 +13,7 @@ import { entersState, getVoiceConnection, joinVoiceChannel, VoiceConnectionDisco
  * @param {boolean} [selfMute=true]
  * @returns {import("@discordjs/voice").VoiceConnection}
  */
-export default (voiceAdapterCreator, channelId, guildId, selfDeaf = true, selfMute = true) => {
-   /**
-    * try and prevent zombie connections that can break this logic
-    * this can occur when the bot was restarted and attempts to reconnect to a voice channel it was previously in (but the bot never had the chance to automatically disconnect due to the previous terminated process)
-    */
-   const existingConnection = getVoiceConnection(guildId);
-   if (existingConnection)
-      existingConnection.destroy();
-
+export default async (voiceAdapterCreator, channelId, guildId, selfDeaf = true, selfMute = true) => {
    const connection = joinVoiceChannel({
       adapterCreator: voiceAdapterCreator,
       channelId,
@@ -30,11 +22,13 @@ export default (voiceAdapterCreator, channelId, guildId, selfDeaf = true, selfMu
       selfMute
    });
 
+
    /**
     * the library should handle reconnecting by itself
     * however in the case of potentially reconnectable disconnects, we'll handle that here
     * also, for auto-disconnects, see voiceChannelDisconnector
     */
+
 
    let isWaitingForReady = false;
 
@@ -51,8 +45,8 @@ export default (voiceAdapterCreator, channelId, guildId, selfDeaf = true, selfMu
             // depending on what happened, the bot may reconnect and we can ignore this disconnect ever happened!
             try {
                await Promise.race([ // see if the voice state changes to Signalling (trying to rejoin the voice channel) or Connecting (trying to resume the existing connection) automatically, if not then one of these Promises will reject
-                  entersState(connection, VoiceConnectionStatus.Signalling, 5_000),
-                  entersState(connection, VoiceConnectionStatus.Connecting, 5_000)
+                  entersState(connection, VoiceConnectionStatus.Signalling, 15_000),
+                  entersState(connection, VoiceConnectionStatus.Connecting, 15_000)
                ]);
                // seems like the library is handling the reconnect, let's ignore it
             } catch {
@@ -97,5 +91,13 @@ export default (voiceAdapterCreator, channelId, guildId, selfDeaf = true, selfMu
       // other state change events aren't of any concern for this logic~
    });
 
-   return connection;
+
+   try {
+      await entersState(connection, VoiceConnectionStatus.Ready, 10_000);
+      return connection;
+
+   } catch (error) {
+      connection.destroy();
+      throw error;
+   };
 };

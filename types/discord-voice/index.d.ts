@@ -9,8 +9,9 @@ import { DiscordGatewayAdapterCreator, VoiceConnection } from "@discordjs/voice"
  * @param guildId #️⃣ the guild to connect to
  * @param selfDeaf 🔇 whether the bot should join deafened
  * @param selfMute 🔇 whether the bot should join muted
+ * @returns 🔉 the voice connection, once it's ready
  */
-export function createConnection(voiceAdapterCreator: DiscordGatewayAdapterCreator, channelId: Snowflake, guildId: Snowflake, selfDeaf?: boolean = true, selfMute?: boolean = true): VoiceConnection;
+export async function createConnection(voiceAdapterCreator: DiscordGatewayAdapterCreator, channelId: Snowflake, guildId: Snowflake, selfDeaf?: boolean = true, selfMute?: boolean = true): Promise<VoiceConnection>;
 
 
 /**

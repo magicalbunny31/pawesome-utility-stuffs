@@ -1,6 +1,6 @@
 {
    "name": "@magicalbunny31/pawesome-utility-stuffs",
-   "version": "3.0.0-dev.9",
+   "version": "3.0.0-dev.10",
    "type": "module",
    "exports": {
       ".": {
