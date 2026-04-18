@@ -21,9 +21,28 @@ export function formatPublicUrl(subdomain: string, key: string): string;
 
 
 /**
+ * 📋 get the first key from a bucket starting with this prefix
+ * @param client 🗝️ s3 client to use
+ * @param bucket 🪣 which bucket that this key is in
+ * @param prefix 📝 the prefix that this key should start with, or `undefined` if no key was found
+ */
+export async function getKey(client: S3Client, bucket: string, prefix: string): Promise<string?>;
+
+
+/**
+ * 🔏 get a pre-signed url for an object in a private bucket
+ * @param client 🗝️ s3 client to use
+ * @param bucket 🪣 which bucket that this key is in
+ * @param key 🏷️ the key of this file
+ * @param expiresIn ⌚ number of seconds that this pre-signed url will be valid for
+ */
+export async function getPreSignedUrl(client: S3Client, bucket: string, key: string, expiresIn: number): Promise<string>;
+
+
+/**
  * 📋 list keys from a bucket starting with this prefix
  * @param client 🗝️ s3 client to use
- * @param bucket 🪣 which bucket to check for these keys
+ * @param bucket 🪣 which bucket that this key is in
  * @param prefix 📝 the prefix that these keys should start with
  */
 export async function getKeys(client: S3Client, bucket: string, prefix: string): Promise<string[]>;
@@ -44,7 +63,7 @@ interface UploadedFile {
 /**
  * 📤 upload a file
  * @param client 🗝️ s3 client to use
- * @param bucket 🪣 which bucket this file will be uploaded
+ * @param bucket 🪣 the bucket to upload this file to
  * @param key 🏷️ the key that this file will have
  * @param data 📦 data to upload
  * @param contentType ❔ content type for this data
@@ -72,9 +91,9 @@ interface UploadFilesConfig {
 };
 
 /**
- * 📤 upload files
+ * 📤 upload multiple files
  * @param client 🗝️ s3 client to use
- * @param bucket 🪣 which bucket this file will be uploaded
+ * @param bucket 🪣 the bucket to upload these files to
  * @param data 🗃️ list of data to upload
  * @returns 📄 the bucket and keys of these uploaded files, or `undefined` if it failed to upload
  */

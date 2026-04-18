@@ -1,6 +1,6 @@
 {
    "name": "@magicalbunny31/pawesome-utility-stuffs",
-   "version": "3.0.0-dev.10",
+   "version": "3.0.0-dev.11",
    "type": "module",
    "exports": {
       ".": {
@@ -89,6 +89,6 @@
    },
    "devDependencies": {
       "eslint": "^10.2.0",
-      "globals": "^17.5.0"
+      "globals": "^17.4.0"
    }
 }
