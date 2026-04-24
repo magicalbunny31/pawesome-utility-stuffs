@@ -18,5 +18,5 @@ export default async (client, bucket, prefix) => {
 
 
    // return the keys of the listed objects
-   return listedObjects.Contents.map(object => object.Key);
+   return listedObjects.Contents?.map(object => object.Key) ?? [];
 };
