@@ -125,6 +125,9 @@ export default async (interaction, expectedUser, receivedUser) => {
    // respond to the interaction
    await interaction.reply({
       components,
+      allowedMentions: {
+         parse: []
+      },
       flags: [
          MessageFlags.Ephemeral,
          MessageFlags.IsComponentsV2

@@ -160,6 +160,9 @@ export default async (interaction, guildInvite = `https://nuzzles.dev/discord`, 
             content: null,
             components,
             files: [],
+            allowedMentions: {
+               parse: []
+            },
             flags: [
                MessageFlags.IsComponentsV2
             ]
