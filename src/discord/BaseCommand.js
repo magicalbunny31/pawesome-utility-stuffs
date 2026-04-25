@@ -60,7 +60,10 @@ export default class BaseCommand {
    };
 
 
-   async deferInteraction() {
+   /**
+    * @param {string} [customId]
+    */
+   async deferInteraction(customId) {
       // this interaction has been deferred (replied to)
       this.repliedTo = true;
 
@@ -68,7 +71,7 @@ export default class BaseCommand {
       switch (true) {
          // defer the interaction
          case this.interaction.isChatInputCommand():
-         case this.interaction.isModalSubmit():
+         case this.interaction.isModalSubmit() && !this.interaction.isFromMessage():
          case this.interaction.isContextMenuCommand():
             return void await this.interaction.deferReply({
                flags: [
@@ -81,9 +84,10 @@ export default class BaseCommand {
          // update the interaction's original reply, or create a new reply
          case this.interaction.isButton():
          case this.interaction.isAnySelectMenu():
+         case this.interaction.isModalSubmit() && this.interaction.isFromMessage():
             if (this.isSameCommandUser())
                return void await this.interaction.update({
-                  components: deferComponents(this.interaction.customId, this.interaction.client.allEmojis, this.interaction.message.components, this.interaction.values),
+                  components: deferComponents(customId ?? this.interaction.customId, this.interaction.client.allEmojis, this.interaction.message.components, this.interaction.values),
                   allowedMentions: {
                      parse: []
                   }

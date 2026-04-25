@@ -38,8 +38,9 @@ export class BaseCommand {
     * ⏳ defer the interaction, or update the message to show a "deferred" state using `@magicalbunny31/pawesome-utility-stuffs/discord`'s `deferComponents`
     *
     * 🔕 this takes into account `BaseCommand#hidden` or will always be hidden if not `BaseCommand#isSameCommandUser()`
+    * @param customId 🆔 override the custom_id (which is automatically obtained from the interaction) of the component to defer, if this interaction came from a message
     */
-   public async deferInteraction(): Promise<void>;
+   public async deferInteraction(customId?: string): Promise<void>;
 
    /**
     * 💬 respond to the interaction, update the message's reply if this is a message component, or create a new reply if not `BaseCommand#isSameCommandUser()`
