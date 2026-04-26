@@ -1,1 +1,0 @@
-module.exports = (array, initialValue = 0) => array.reduce((accumulator, current) => accumulator + current, initialValue);

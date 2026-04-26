@@ -1,13 +1,10 @@
-import { ApplicationEmoji, GuildMember, GuildTextBasedChannel, Interaction, MessageComponent, MessageComponentInteraction, PermissionFlagsBits, User } from "discord.js";
-
-
 /**
  * 🎨 (decimal) colours that i use more than once across all projects
  * @example
  * colours.bunny_gold;
  * // => 14988288
  */
-export const colours: typeof import("../src/data/colours.js");
+export const colours: typeof import("../src/colours.js").default;
 
 
 /**
@@ -19,19 +16,6 @@ export const colours: typeof import("../src/data/colours.js");
  * // => [ `bunny`, `bunny`, `bunny`, `bunny`, `bunny` ]
  */
 export function autoArray<T>(length: number, func: (value?: T, index?: number) => T): T[];
-
-
-/**
- * 🔓 check if a member has permissions to use a (discord) chat-input application command
- * @param commandId 🔎 id of the command to view permissions of
- * @param channel 💬 channel to check permissions against
- * @param member 👤 member to check permissions against
- * @see https://nuzzles.dev/assets/discord/other/application-command-permissions-flowchart.png
- * @example
- * checkChatInputCommandPermissions(`490178047325110282`, channel, user);
- * // => true
- */
-export async function checkChatInputCommandPermissions(commandId: string, channel: GuildTextBasedChannel, member: GuildMember): Promise<boolean>;
 
 
 /**
@@ -52,32 +36,6 @@ export function choice<T>(array: T[]): T;
  * // => [ `🦊`, `🦌` ]
  */
 export function choice<T>(array: T[], choices: number): T[];
-
-
-type EmojisMap = ReturnType<typeof emojis>;
-
-/**
- * 💭 set a [Button](https://discord.com/developers/docs/components/reference#button) component to a "deferred" state in a list of message `components`
- * @param customId 🆔 custom_id of the [Button](https://discord.com/developers/docs/components/reference#button) component to set to a "deferred" state
- * @param components 📋 all `component`s of the message
- */
-export function deferComponents(customId: string, emojis: EmojisMap, components: MessageComponent[]): MessageComponent[];
-
-/**
- * 💭 set a [String Select](https://discord.com/developers/docs/components/reference#string-select), [User Select](https://discord.com/developers/docs/components/reference#user-select), [Role Select](https://discord.com/developers/docs/components/reference#role-select), [Mentionable Select](https://discord.com/developers/docs/components/reference#mentionable-select), or [Channel Select](https://discord.com/developers/docs/components/reference#channel-select) component to a "deferred" state in a list of message `components`
- * @param customId 🆔 custom_id of the [String Select](https://discord.com/developers/docs/components/reference#string-select), [User Select](https://discord.com/developers/docs/components/reference#user-select), [Role Select](https://discord.com/developers/docs/components/reference#role-select), [Mentionable Select](https://discord.com/developers/docs/components/reference#mentionable-select), or [Channel Select](https://discord.com/developers/docs/components/reference#channel-select) component to display as deferred
- * @param components 📋 all `component`s of the message
- * @param values 👉 values of the [String Select](https://discord.com/developers/docs/components/reference#string-select), [User Select](https://discord.com/developers/docs/components/reference#user-select), [Role Select](https://discord.com/developers/docs/components/reference#role-select), [Mentionable Select](https://discord.com/developers/docs/components/reference#mentionable-select), or [Channel Select](https://discord.com/developers/docs/components/reference#channel-select) component that were selected
- */
-export function deferComponents(customId: string, emojis: EmojisMap, components: MessageComponent[], values: string[]): MessageComponent[];
-
-
-/**
- * 🦊 discord-formatted emoji strings
- * @param applicationEmojis 🤖 array of this app's `ApplicationEmoji`s - don't specify this argument to only return emojis from guilds
- * @returns ❓ this returns an [`Object`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) combining this app's `ApplicationEmoji`s (optional) and emojis from guilds
- */
-export function emojis(applicationEmojis?: ApplicationEmoji[]): { [emojiName: string]: string };
 
 
 /**
@@ -130,8 +88,8 @@ export function findSimilar<T>(query: string, targets: T[], settings: {
 
 
 /**
- * 📄 format bytes into a human-readable string
- * @param bytes 💻 bytes to convert into a human-readable string
+ * 📄 format bytes into a ~~human~~ *furry*-readable string
+ * @param bytes 💻 bytes to convert into a ~~human~~ *furry-readable string
  * @param useBytes 🔀 set to `true` if you want to use mebi- (default `false`)
  * @param decimals 🔢 amount of decimal spaces to display in the human-readable string (default `2`)
  * @see https://stackoverflow.com/a/18650828
@@ -144,16 +102,14 @@ export function formatBytes(bytes: number, useBytes?: boolean = false, decimals?
 
 
 /**
- * 📝 formats a permission to a readable string
- * @see https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags
- * @param permissionsInput 🗨️ permissions to format
+ * 🕰️ format a duration into a ~~human~~ *furry*-readable string
+ * @param durationInSeconds ⌚ duration in seconds to convert into a ~~human~~ *furry-readable string
+ * @param locale 💬 language to use to format the duration
  * @example
- * formatPermission([ PermissionFlagsBits.BanMembers, PermissionFlagsBits.KickMembers ]);
- * formatPermission(0x6);
- * formatPermission(0x6n);
- * // => [ `Ban Members`, `Kick Members` ]
+ * formatDuration(621926);
+ * // => `1 week, 4 hours, 45 minutes, and 26 seconds`;
  */
-export function formatPermissions(permissionsInput: number | bigint): string[];
+export function formatDuration(durationInSeconds: number, locale?: Intl.LocalesArgument = `en-US`): string;
 
 
 /**
@@ -188,24 +144,6 @@ export function partition<T>(array: T[], condition: (value?: T, index?: number, 
 
 
 /**
- * ⚠️ responds to the interaction by showing the user an error message
- * @param interaction 💬 the command's interaction
- * @param guildInvite 🔗 this application's guild invite
- * @param error 📋 the error that occurred
- */
-export async function respondToErrorInteraction(interaction: Interaction, guildInvite?: string = `https://nuzzles.dev/discord`, error?: Error): Promise<void>;
-
-
-/**
- * 🗯️ respond to a `MessageComponentInteraction` explaining that they are not the target user to respond to this ``MessageComponent
- * @param interaction 💬 the `MessageComponentInteraction` to respond to
- * @param expectedUser 👤 the user that should be able to interact with this `MessageComponent`
- * @param receivedUser 👥 the user that ended up interacting with this `MessageComponent`
- */
-export async function respondToWrongUserMessageComponentInteraction(interaction: MessageComponentInteraction, expectedUser: User, receivedUser: User): Promise<void>;
-
-
-/**
  * 📤 remove duplicates from an `Array` of values
  * @param array 📃 `Array` of values (presumably with duplicates, duh)
  * @example
@@ -227,7 +165,8 @@ export function shuffle<T>(array: T[]): T[];
 
 /**
  * 🔨 strips indents off a multi-line template literals to form a formatted string
- * @param string 🗨️ template literals to strip indents off of
+ * @param strings 🗨️ template literal static parts
+ * @param values 🔢 interpolated values
  * @example
  * strip`
  *    hai!
@@ -236,7 +175,7 @@ export function shuffle<T>(array: T[]): T[];
  * `;
  * // => `hai!\nhewwo!\nmeowdy!`
  */
-export function strip(text: string): string;
+export function strip(strings: TemplateStringsArray | string[], ...values: any[]): string;
 
 
 /**
@@ -263,6 +202,17 @@ export function sum<T>(array: T[], initialValue?: any = 0): T;
  * @returns 📄 the resolved function's returned value, or `undefined` if it errored
  */
 export async function tryOrUndefined<T>(func: T): Promise<T>?;
+
+
+/**
+ * 🤖 create a user agent string for this project
+ * @param {string} name 📛 name of this project
+ * @param {string} version 🏷️ version of this project
+ * @param {string} homepage 🌐 homepage containing information about this project
+ * @param {string} email 📧 contact email for people to contact regarding this project
+ */
+export function userAgent(name: string, version: string, homepage: string, email: string): string;
+
 
 
 /**

@@ -1,9 +1,5 @@
 # 💻 vscode
-.vscode/
-*.code-workspace
+.vscode/*
 
 # 📦 dependencies
 node_modules/
-
-# 🔧 tests
-tests/
