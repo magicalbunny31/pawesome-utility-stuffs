@@ -88,8 +88,8 @@ export function findSimilar<T>(query: string, targets: T[], settings: {
 
 
 /**
- * 📄 format bytes into a human-readable string
- * @param bytes 💻 bytes to convert into a human-readable string
+ * 📄 format bytes into a ~~human~~ *furry*-readable string
+ * @param bytes 💻 bytes to convert into a ~~human~~ *furry-readable string
  * @param useBytes 🔀 set to `true` if you want to use mebi- (default `false`)
  * @param decimals 🔢 amount of decimal spaces to display in the human-readable string (default `2`)
  * @see https://stackoverflow.com/a/18650828
@@ -99,6 +99,17 @@ export function findSimilar<T>(query: string, targets: T[], settings: {
  * // => `10 KB`;
  */
 export function formatBytes(bytes: number, useBytes?: boolean = false, decimals?: number = 2): string;
+
+
+/**
+ * 🕰️ format a duration into a ~~human~~ *furry*-readable string
+ * @param durationInSeconds ⌚ duration in seconds to convert into a ~~human~~ *furry-readable string
+ * @param locale 💬 language to use to format the duration
+ * @example
+ * formatDuration(621926);
+ * // => `1 week, 4 hours, 45 minutes, and 26 seconds`;
+ */
+export function formatDuration(durationInSeconds: number, locale?: Intl.LocalesArgument = `en-US`): string;
 
 
 /**

@@ -3,6 +3,7 @@ export { default as choice         } from         "./choice.js";
 export { default as colours        } from        "./colours.js";
 export { default as findSimilar    } from    "./findSimilar.js";
 export { default as formatBytes    } from    "./formatBytes.js";
+export { default as formatDuration } from "./formatDuration.js";
 export { default as noop           } from           "./noop.js";
 export { default as number         } from         "./number.js";
 export { default as partition      } from      "./partition.js";
